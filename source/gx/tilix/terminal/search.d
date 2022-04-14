@@ -213,6 +213,7 @@ private:
         string text = seSearch.getText();
         if (text.length == 0) {
             vte.searchSetRegex(null, 0);
+            vte.matchRemoveAll();
             return;
         }
 
@@ -228,6 +229,7 @@ private:
             }
             trace("Setting VTE.Regex for pattern %s", text);
             vte.searchSetRegex(VRegex.newSearch(text, -1, flags), 0);
+            vte.matchAddRegex(VRegex.newSearch(text, -1, flags), 0);
             seSearch.getStyleContext().removeClass("error");
         } catch (GException ge) {
             string message = format(_("Search '%s' is not a valid regex\n%s"), text, ge.msg);
