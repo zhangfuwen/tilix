@@ -77,11 +77,11 @@ jobs:
       run: podman run -t -e COMPILER_VENDOR=$CVENDOR -e CC=gcc -e CXX=g++ -v `pwd`:/build tilix
            ./.github/ci/run-build.sh
 
-    - name: Test
-      run: podman run -t -e COMPILER_VENDOR=$CVENDOR -e CC=gcc -e CXX=g++ -v `pwd`:/build tilix
-           ./.github/ci/run-tests.sh
+    # - name: Test
+    #   run: podman run -t -e COMPILER_VENDOR=$CVENDOR -e CC=gcc -e CXX=g++ -v `pwd`:/build tilix
+    #        ./.github/ci/run-tests.sh
 
     - uses: actions/upload-artifact@v2
       with:
         name: bins
-        path: /build/cibuild
+        path: `pwd`
