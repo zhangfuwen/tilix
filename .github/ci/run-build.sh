@@ -30,4 +30,4 @@ meson --buildtype=$build_type \
 
 ninja
 DESTDIR=/tmp/install_root/ ninja install
-rm -r /tmp/install_root/
+
